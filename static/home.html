@@ -1,0 +1,165 @@
+<div id="body">
+    <div class="container">
+        <div id="contact" class="section">
+            <h2>联系我们</h2>
+            <ul>
+                <li>中国·重庆·北碚</li>
+                <li><a href="mailto:xk477@qq.com">xk477@qq.com</a></li>
+                <li>开发者</li>
+                <li><a>lzx9002</a></li>
+            </ul>
+        </div>
+        <!--        <h2>基地截图</h2>-->
+        <!--        <div id="screenshots" class="section">-->
+        <!--            <div class="layui-carousel" id="carousel-screenshots-image">-->
+        <!--                <div carousel-item>-->
+        <!--                    <div>-->
+        <!--                        <img src="/img/figure/1.png" alt="4" class="btn" lay-img-alt="1">-->
+        <!--                    </div>-->
+        <!--                    <div>-->
+        <!--                        <img src="/img/figure/2.png" alt="2" class="btn" lay-img-alt="2">-->
+        <!--                    </div>-->
+        <!--                    <div>-->
+        <!--                        <img src="/img/figure/3.png" alt="3" class="btn" lay-img-alt="3">-->
+        <!--                    </div>-->
+        <!--                    <div>-->
+        <!--                        <img src="/img/figure/4.png" alt="4" class="btn" lay-img-alt="4">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <h2>基地截图</h2>
+        <div id="screenshots" class="section">
+            <img src="img/thumbnail/1.png" alt="1" class="btn" lay-img-alt="1">
+            <img src="img/thumbnail/2.png" alt="2" class="btn" lay-img-alt="2">
+            <img src="img/thumbnail/3.png" alt="3" class="btn" lay-img-alt="3">
+            <img src="img/thumbnail/4.png" alt="4" class="btn" lay-img-alt="4">
+        </div>
+
+        <div id="players" class="section" style="width: 50%;">
+            <h2>玩家列表</h2>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>加入顺序</th>
+                    <th>玩家名称</th>
+                    <th>职位</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        layui.use(function(){
+            const carousel = layui.carousel;
+            const layer = layui.layer;
+            const util = layui.util;
+            // const img = $(".btn")
+            // var width = img[0].width //获取图片宽度
+            // var height = img[0].height //获取图片高度
+            const width = 1600;
+            const height = 837;
+
+            // 渲染 - 图片轮播
+            carousel.render({
+                elem: '#carousel-screenshots-image',
+                width: width,
+                height: height,
+                interval: 3000
+            });
+            $.ajax({
+                url: 'api/get_player_list', // 请根据您的后端地址修改
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    var jq_error = $('#players tbody');
+                    // 清空表格内容
+                    jq_error.empty();
+
+                    // 检查是否有数据
+                    if(response.length === 0){
+                        jq_error.append('<tr><td colspan="6">暂无数据</td></tr>');
+                        return;
+                    }
+                    // 遍历数据并生成表格行
+                    $.each(response, function(index, item){
+                        var row = '<tr>' +
+                            '<td>' + item.id + '</td>' +
+                            '<td>' + item.player + '</td>' +
+                            '<td>' + item.position + '</td>' +
+                            '</tr>';
+                        jq_error.append(row);
+                    });
+                },
+                error: function(xhr, status, error){
+                    // 显示错误消息
+                    let jq_error = $('#dataTable tbody');
+                    jq_error.empty();
+                    jq_error.append('<tr><td colspan="6">无法加载数据，请稍后再试。</td></tr>');
+                    console.error('Error fetching data:', error);
+                }
+            });
+            const data = [
+                {
+                    "alt": "1",
+                    "pid": 1,
+                    "src": "img/figure/1.png",
+                },
+                {
+                    "alt": "2",
+                    "pid": 2,
+                    "src": "img/figure/2.png",
+                },
+                {
+                    "alt": "3",
+                    "pid": 3,
+                    "src": "img/figure/3.png",
+                },
+                {
+                    "alt": "4",
+                    "pid": 4,
+                    "src": "img/figure/4.png",
+                }
+            ];
+            util.on('lay-img-alt', {
+                1: function () {
+                    layer.photos({
+                        photos: {
+                            'title': '1',
+                            'start': 0,
+                            'data': data
+                        }}
+                    );
+                },
+                2: function () {
+                    layer.photos({
+                        photos: {
+                            'title': '2',
+                            'start': 1,
+                            'data': data
+                        }}
+                    );
+                },
+                3: function () {
+                    layer.photos({
+                        photos: {
+                            'title': '3',
+                            'start': 2,
+                            'data': data
+                        }}
+                    );
+                },
+                4: function () {
+                    layer.photos({
+                        photos: {
+                            'title': '4',
+                            'start': 3,
+                            'data': data
+                        }}
+                    );
+                }
+            });
+        });
+    </script>
+</div>

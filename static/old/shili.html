@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>了解服务器势力</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/css/layui.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/layui.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1E9FFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #1E9FFF;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #1E9FFF;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .screenshots a {
+            flex: 1 1 calc(25% - 10px);
+            box-sizing: border-box;
+        }
+        .screenshots img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #ffffff;
+            color: #777;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        @media (max-width: 768px) {
+            .screenshots a {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+        @media (max-width: 480px) {
+            .screenshots a {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+<body>
+    <i id="iconPlayButton" class="fa fa-play"></i>
+
+    <audio id="audioPlayer" src="114.mp3"></audio>
+
+    <script>
+        const iconPlayButton = document.getElementById('iconPlayButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        iconPlayButton.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                iconPlayButton.classList.remove('fa-play');
+                iconPlayButton.classList.add('fa-pause');
+            } else {
+                audioPlayer.pause();
+                iconPlayButton.classList.remove('fa-pause');
+                iconPlayButton.classList.add('fa-play');
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>了解服务器势力</h1>
+    </header>
+
+    <nav>
+        <a href="http://byzc.rf.gd/">返回主页</a>
+    </nav>
+
+        <div id="players" class="section">
+            <h2></h2>
+            <table class="layui-table">
+                <thead>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>势力</td>
+                    </tr>
+                    <tr>
+                        <td>1.463基地</td>
+                        <td>创办者ID：ThalamicCape463</td>
+                        <td>服务器玩家技术最强，主攻红石。</td>
+                    </tr>
+                    <tr>
+                        <td>2.BYZC基地</td>
+                        <td>创办者ID：zcagz、onjil</td>
+                        <td>服务器主世界面积第一，全是养老玩家。不定期福利。主攻红石与农业</td>
+                    </tr>
+                    <tr>
+                        <td>3.MCkunkun基地</td>
+                        <td>创办者ID：MCkunkun</td>
+                        <td>服务器最富有的基地，福利很好。</td>
+                    </tr>
+                    <tr>
+                        <td>4.大象君的基地</td>
+                        <td>创办者ID：daxiabgjuner、LZY、LZH</td>
+                        <td>近期创办的养老基地。未来可期</td>
+                    </tr>
+                    <tr>
+                        <td>5.zyx空岛基地</td>
+                        <td>创办者：zyx</td>
+                        <td>不做评价</td>
+                    </tr>
+                    <tr>
+                        <td>6.BYZCW基地</td>
+                        <td>创办者ID：zcw、zcagz</td>
+                        <td>新基地，虽属BYZC附属基地，但更偏向独立。目前没有主攻方向。基地离主城区较远，适合休闲玩家。</td>
+                    </tr>
+                    <tr>
+                        <td>特殊基地</td>
+                    </tr>
+                    <tr>
+                        <td>1.lzx9002 BYZC附属基地</td>
+                        <td>创办者ID：lzx9002</td>
+                        <td>主攻红石，由lzx9002创建管理BYZC只提供物资，待遇与BYZC相同</td>
+                    </tr>
+                    <tr>
+                        <td>2.onjil BYZC附属基地</td>
+                        <td>创办者ID：onjil</td>
+                        <td>轻度红石，由onjil管理，待遇与BYZC相同</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        ©2025 BYZC保留所有权利
+    </footer>
+</body>
+</html>

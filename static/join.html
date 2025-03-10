@@ -1,0 +1,23 @@
+<div id="body">
+    <iframe id="qq" src="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ZNq52Fv4vdHIwWy9a3SVYX4Z82VpgabZ&authKey=drYg27aBFynviSDQq5y5%2BCLE6LnLrSBbnvWaFaMeuJwAHTewGW3Ww5U25MY6Gh8H&noverify=0&group_code=673189479" frameborder="0" style="width: 100%"></iframe>
+    <script>
+        // 设置元素高度的函数
+        function setElementHeight() {
+            const viewportHeight = $(window).height(); // 获取视口高度
+            const headerHeight = $('header').outerHeight(true); // 获取页眉高度（包括 margin 和 padding）
+            const navHeight = $('#nav').outerHeight(true); // 获取nav高度（包括 margin 和 padding）
+            const footerHeight = $('footer').outerHeight(true); // 获取页脚高度（包括 margin 和 padding）
+            const availableHeight = viewportHeight - headerHeight - navHeight - footerHeight - 3; // 计算可用高度
+
+            $('#qq').height(availableHeight); // 设置元素高度
+        }
+
+        // 初始化设置
+        setElementHeight();
+
+        // 监听窗口大小变化，动态调整高度
+        $(window).resize(function () {
+            setElementHeight();
+        });
+    </script>
+</div>

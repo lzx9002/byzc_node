@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碧月云BYZC</title>
+    <!-- 引入layui CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/css/layui.css">
+    <!-- 引入jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- 引入layui JS -->
+    <script src="https://cdn.jsdelivr.net/npm/layui@2.7.6/dist/layui.js"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1E9FFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #1E9FFF;
+        }
+        .container {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            color: #1E9FFF;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .screenshots a {
+            flex: 1 1 calc(25% - 10px);
+            box-sizing: border-box;
+        }
+        .screenshots img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #ffffff;
+            color: #777;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        @media (max-width: 768px) {
+            .screenshots a {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+        @media (max-width: 480px) {
+            .screenshots a {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+    <!-- 引入 Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        #iconPlayButton {
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <i id="iconPlayButton" class="fa fa-play"></i>
+
+    <audio id="audioPlayer" src="./114.mp3"></audio>
+
+    <script>
+        const iconPlayButton = document.getElementById('iconPlayButton');
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        iconPlayButton.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                iconPlayButton.classList.remove('fa-play');
+                iconPlayButton.classList.add('fa-pause');
+            } else {
+                audioPlayer.pause();
+                iconPlayButton.classList.remove('fa-pause');
+                iconPlayButton.classList.add('fa-play');
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>欢迎来到我们的基地</h1>
+        <p>BYZC</p>
+    </header>
+
+    <nav>
+        <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ZNq52Fv4vdHIwWy9a3SVYX4Z82VpgabZ&authKey=drYg27aBFynviSDQq5y5%2BCLE6LnLrSBbnvWaFaMeuJwAHTewGW3Ww5U25MY6Gh8H&noverify=0&group_code=673189479">加入我们</a>
+        <a href="shili.html">服务器势力</a>
+        <a href="zc.html">关于BYZC</a>
+        <a href="/index.html">返回新版官网</a>
+    </nav>
+
+    <div class="container">
+        <div id="contact" class="section">
+            <h2>联系我们</h2>
+            <ul>
+                <li>中国·重庆·北碚</li>
+                <li><a href="mailto:xk477@qq.com">xk477@qq.com</a></li>
+            </ul>
+        </div>
+
+        <div id="screenshots" class="section">
+            <h2>截图点击全屏查看</h2>
+            <div class="screenshots">
+                <a href="10.png" target="_blank">
+                    <img src="1.png" alt="1">
+                </a>
+                <a href="20.png" target="_blank">
+                    <img src="2.png" alt="2">
+                </a>
+                <a href="30.png" target="_blank">
+                    <img src="3.png" alt="3">
+                </a>
+                <a href="40.png" target="_blank">
+                    <img src="4.png" alt="4">
+                </a>
+            </div>
+        </div>
+
+        <div id="players" class="section">
+            <h2>玩家列表</h2>
+            <table class="layui-table">
+                <thead>
+                    <tr>
+                        <th>加入顺序</th>
+                        <th>玩家名称</th>
+                        <th>职位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>zcagz</td>
+                        <td>创建者</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>onjil</td>
+                        <td>管理员</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>lzx9002</td>
+                        <td>管理员</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>212722</td>
+                        <td>管理员</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>wjr</td>
+                        <td>普通成员</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>myy</td>
+                        <td>普通成员</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>zcw</td>
+                        <td>普通成员</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>LinMzzz</td>
+                        <td>普通成员</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        ©2025 BYZC保留所有权利
+    </footer>
+</body>
+</html>

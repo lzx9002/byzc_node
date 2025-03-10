@@ -1,0 +1,80 @@
+<div id="body">
+  <h2>普通基地</h2>
+  <table id="base" class="layui-table">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>基地名</th>
+        <th>创办者</th>
+        <th>简介</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <h2>特殊基地</h2>
+  <table id="special_base" class="layui-table">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>基地名</th>
+        <th>创办者</th>
+        <th>简介</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    layui.use(function() {
+      $.ajax({
+        url: 'api/get_base_list', // 请根据您的后端地址修改
+        type: 'GET',
+        dataType: 'json',
+        success: function(response){
+          var $base = $('#base');
+          var $special_base = $('#special_base');
+          // 清空表格内容
+          $base.empty();
+          $special_base.empty();
+
+          // 检查是否有数据
+          if(response.base.length === 0){
+            $base.append('<tr><td colspan="6">暂无数据</td></tr>');
+            return;
+          }
+          if(response.special_base.length === 0){
+            $special_base.append('<tr><td colspan="6">暂无数据</td></tr>');
+            return;
+          }
+          // 遍历数据并生成表格行
+          $.each(response.base, function(index, item){
+            var row = '<tr>' +
+                    '<td>' + item.id + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.founder + '</td>' +
+                    '<td>' + item.synopsis + '</td>' +
+                    '</tr>';
+            $base.append(row);
+          });
+          $.each(response.special_base, function(index, item){
+            var row = '<tr>' +
+                    '<td>' + item.id + '</td>' +
+                    '<td>' + item.name + '</td>' +
+                    '<td>' + item.founder + '</td>' +
+                    '<td>' + item.synopsis + '</td>' +
+                    '</tr>';
+            $special_base.append(row);
+          });
+        },
+        error: function(xhr, status, error){
+          var $base = $('#base');
+          var $special_base = $('#special_base');
+          $base.empty();
+          $special_base.empty();
+          $base.append('<tr><td colspan="6">无法加载数据，请稍后再试。</td></tr>');
+          $special_base.append('<tr><td colspan="6">无法加载数据，请稍后再试。</td></tr>');
+          console.error('Error fetching data:', error);
+        }
+      });
+    });
+  </script>
+</div>

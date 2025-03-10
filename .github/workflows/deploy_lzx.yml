@@ -1,0 +1,43 @@
+name: Deploy to lzx FTP server
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: 传输文件至服务器
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: zc.5ibc.cn
+          username: ftpadmin
+          password: ${{secrets.FTPADMIN_PASSWORD}}
+          local-dir: ./
+          server-dir: /
+
+      - name: 安装依赖
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: zc.5ibc.cn
+          username: root
+          password: ${{secrets.ROOT_PASSWORD}}
+          script: |
+            cd /opt/byzc_node
+            npm install
+
+      - name: 运行
+        uses: appleboy/ssh-action@v1.2.1
+        with:
+          host: zc.5ibc.cn
+          username: root
+          password: ${{secrets.ROOT_PASSWORD}}
+          script: |
+            cd /opt/byzc_node
+            pm2 reload zc

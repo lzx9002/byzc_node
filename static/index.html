@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碧月云BYZC</title>
+    <!-- 引入layui CSS -->
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <!-- 引入jQuery -->
+    <script src="jquery-3.7.1.min.js"></script>
+    <!-- 引入layui JS -->
+    <script src="layui/layui.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <audio autoplay="autoplay" loop="loop" controls="controls" preload="auto" style="position:absolute;top:0;left:0;">
+            <source src="audio/background.mp3" type="audio/mpeg">
+        </audio>
+        <h1>欢迎来到我们的基地</h1>
+        <p>BYZC</p>
+    </header>
+    <ul id="nav" class="layui-nav layui-bg-blue">
+        <li id="home" class="layui-nav-item layui-this">
+            <a href="javascript:" onclick="load_html('home.html');">首页</a>
+        </li>
+        <li id="power" class="layui-nav-item">
+            <a href="javascript:" onclick="load_html('power.html');">服务器势力</a>
+        </li>
+        <li id="about" class="layui-nav-item">
+            <a href="javascript:" onclick="load_html('zc.html');">关于BYZC</a>
+        </li>
+        <li id="join" class="layui-nav-item">
+            <a href="javascript:" onclick="load_html('join.html');">加入我们</a>
+        </li>
+        <li id="old" class="layui-nav-item">
+            <a href="old/index.html">老版官网</a>
+        </li>
+        <li id="game" class="layui-nav-item">
+            <a href="javascript:" onclick="load_html('game.html');">好玩的</a>
+        </li>
+    </ul>
+    <div id="body"></div>
+    <footer>
+        ©2025 BYZC保留所有权利
+    </footer>
+    <script>
+        layui.use(function(){
+            load_html('home.html');
+        });
+    </script>
+</body>
+</html>
